@@ -1,4 +1,4 @@
-var base_url = "http://greyboxerp.in/nidhi/";
+var base_url = "http://greyboxerp.com/nidhi/";
 
 function getSID(){
 	var sid = localStorage.getItem("sid");
@@ -59,6 +59,7 @@ function populateMsg(data){
 		var chat = document.getElementById("chat");
 		var msgstr = "";
 		var tmp = "";
+		
 		
 		for (var i = 0; i < data.length; i++) {
 			 var color ="55C1E7";
