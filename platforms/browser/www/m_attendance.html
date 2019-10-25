@@ -17,7 +17,7 @@
       <title>GreyBox Admin</title>
       <style>
 	  body {
-	background-image:url(img/s71.png);
+	background-image:url(img/s72.png);
 	background-size: 100% 100%;
     width: 100%;
     height: 100%;
@@ -132,7 +132,7 @@ a{
                         <div class='content'></div>
                         <br>
                         <div class="header">
-                           <p class="title" id='sname' style="font-size:18px;" >Welcome </p>
+                           <p class="title" id='sname' style="font-size:18px;" ></p>
                         </div>
                         
                         <div class="content">
@@ -201,7 +201,7 @@ if(localStorage.getItem("attendance") !=null)
    <script>
       function fillAttendance(q)
       {
-      	var sql = "sid=" + q;
+      	var sql = "sid=" + q + "&key=" +  localStorage.getItem("db");
       	var req = new XMLHttpRequest();
       	req.onreadystatechange = function() {
       		if (req.readyState == 4 && req.status == 200) {

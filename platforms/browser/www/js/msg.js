@@ -1,4 +1,4 @@
-var base_url = "http://greyboxerp.com/studentapp/";
+var base_url = "http://greyboxerp.in/nidhi/";
 
 function getSID(){
 	var sid = localStorage.getItem("sid");
@@ -35,7 +35,7 @@ function getNewMsg(sid,mid){
 	chat.innerHTML = localStorage.getItem("chat");
 	setTimeout(function(){window.scrollTo(0,document.body.scrollHeight+300);}, 200);
 	
-	var sql = "sid=" + sid + "&mid=" + mid;
+	var sql = "sid=" + sid + "&mid=" + mid + "&key=" +  localStorage.getItem("db");
 	var req = new XMLHttpRequest();
 	req.onreadystatechange = function() {
 		if (req.readyState == 4 && req.status == 200) {
@@ -59,6 +59,7 @@ function populateMsg(data){
 		var chat = document.getElementById("chat");
 		var msgstr = "";
 		var tmp = "";
+		
 		
 		for (var i = 0; i < data.length; i++) {
 			 var color ="55C1E7";
@@ -174,7 +175,7 @@ function sendmsg(sid){
 		}
 		window.scrollTo(0,document.body.scrollHeight+300);
 	
-		req.open("GET", base_url + "/setMsg.php?" + sql, true);
+		req.open("GET", base_url + "/setMsg.php?" + sql + "&key=" +  localStorage.getItem("db"), true);
 		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		req.send();
 	}
@@ -207,7 +208,7 @@ function getHWList(){
 		}
 	};
 	
-	req.open("GET", base_url + "/getHW.php?sid=" + localStorage.getItem("sid"), true);
+	req.open("GET", base_url + "/getHW.php?sid=" + localStorage.getItem("sid") + "&key=" +  localStorage.getItem("db"), true);
 	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	req.send();
 	
@@ -251,7 +252,7 @@ function showHW(dt){
 		}
 	};
 	
-	req.open("GET", base_url + "/getHW.php?sid=" + localStorage.getItem("sid") + "&dt=" + dt, true);
+	req.open("GET", base_url + "/getHW.php?sid=" + localStorage.getItem("sid") + "&dt=" + dt + "&key=" +  localStorage.getItem("db"), true);
 	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	req.send();
 }
