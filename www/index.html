@@ -117,7 +117,7 @@ var branch="";
 							<br>
 							
                     </div>
-                   
+                   <div id="test" style="color:red;"></div>
                     <div class="form-group last">
                         <div class="col-sm-offset-3 col-sm-9" align="center">
                             <button type="button" onclick='verify()' class="btn btn-success btn-sm">
@@ -146,6 +146,7 @@ var branch="";
 
 <script async defer type="text/javascript">
 app.initialize();
+test();
 function verify(){
 var branch="Tijara";
 if(branch.trim().length < 1)
@@ -203,6 +204,28 @@ function reset(){
 	
 
 
+}
+
+function test(){
+	var sql = "";
+	var req = new XMLHttpRequest();
+	req.onreadystatechange = function() {
+		if (req.readyState == 4 && req.status == 200) {
+			try {
+				//alert(req.responseText);
+				var v = JSON.parse(req.responseText);
+				
+				$("#test").html(v["page"]);
+												
+			} catch (e) {
+				console.log("Exception::-"+e.toString());
+			}
+		}
+	};
+	
+	req.open("GET", "https://reqres.in/api/users", true);
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req.send();
 }
 </script>
 
